@@ -1,3 +1,6 @@
+// in development
+
+
 const Q = require("QuickAppJS")
 let userModel = Q.userModel({ // this can only be called once
     // name is always "user"
@@ -5,14 +8,14 @@ let userModel = Q.userModel({ // this can only be called once
         // email and password are standard
         Q.property({
             name: "firstName",
-            type: Q.types.STRING,
+            type: Q.types.TEXT,
             nullable: false,
             enterOnRegistration: true,
             userEdibility: Q.READ_AND_WRITE
         }),
         Q.property({
             name: "lastName",
-            type: Q.types.STRING,
+            type: Q.types.TEXT,
             nullable: false,
             enterOnRegistration: true,
             userEdibility: Q.READ_AND_WRITE
@@ -36,12 +39,12 @@ let rideModel = Q.model({
         }),
         Q.property({
             name: "fromPlace",
-            type: Q.types.STRING,
+            type: Q.types.TEXT,
             nullable: false
         }),
         Q.property({
             name: "toPlace",
-            type: Q.types.STRING,
+            type: Q.types.TEXT,
             nullable: false
         }),
         Q.property({
@@ -132,7 +135,7 @@ Q.app({
                     }),
                     Q.button({
                         label: "Book ride",
-                        onClick: function(objects) {
+                        onClick: function (objects) {
                             Q.sendMail({
                                 to: objects.item.provider.email,
                                 // if no "from" is given, the app name and domain will be used. QuickAppJS has it's own smtp server for that
@@ -146,7 +149,7 @@ Q.app({
                                 buttons: [
                                     Q.popupMessageButton({
                                         label: "Close",
-                                        onClick: function() {
+                                        onClick: function () {
                                             Q.deleteAllObjects()
                                             Q.goto("/")
                                         }
